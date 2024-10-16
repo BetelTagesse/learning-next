@@ -84,9 +84,7 @@ const Nav = () => {
                 className="rounded-full"
                 alt="profile"
                 onClick={() => {
-                  settoggleDropdown((prev) => {
-                    !prev;
-                  });
+                  settoggleDropdown((prev) => !prev);
                 }}
               />
 
