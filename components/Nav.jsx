@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-  const isUserLoggedIn = true; // Replace with actual session check if available
+  const { data: session } = useSession(); // Replace with actual session check if available
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
@@ -34,7 +34,7 @@ const Nav = () => {
 
       {/* Navigation items aligned right */}
       <div className="hidden sm:flex items-center gap-5">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <>
             <Link href="/create-prompt" className="black_btn">
               Create Post
@@ -68,7 +68,7 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
       <div className="sm:hidden flex items-center relative">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <>
             <Image
               src="/assets/images/logo.svg"
